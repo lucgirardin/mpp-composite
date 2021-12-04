@@ -1,6 +1,6 @@
 plugins {
-    kotlin("multiplatform") version "1.6.0"
-    "application"
+    kotlin("multiplatform") version "1.5.31"
+    application
 }
 
 group = "com.macrofocus"
@@ -11,7 +11,9 @@ repositories {
 }
 
 kotlin {
-    jvm()
+    jvm() {
+        withJava()
+    }
 
     js {
         browser {
@@ -50,3 +52,8 @@ kotlin {
         val jsTest by getting { /* ... */ }
     }
 }
+
+application {
+    mainClass.set("com.macrofocus.app.Main")
+}
+
