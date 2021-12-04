@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform") version "1.6.0"
+    "application"
 }
 
 group = "com.macrofocus"
