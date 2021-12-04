@@ -43,6 +43,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation("com.macrofocus:common:1.0")
             }
         }
         val commonTest by getting {

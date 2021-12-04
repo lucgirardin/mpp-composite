@@ -6,11 +6,19 @@ pluginManagement {
 
 rootProject.name = "mpp-composite"
 
-includeBuild("common") {
-    dependencySubstitution {
-        substitute(module("com.macrofocus:common")).using(project(":"))
+val composite: String by settings
+when(composite) {
+    "includeBuild" -> {
+        includeBuild("common") {
+            dependencySubstitution {
+                substitute(module("com.macrofocus:common")).using(project(":"))
+            }
+        }
+        includeBuild("app") {
+        }
+    }
+    else -> {
+        include(":common")
+        include(":app")
     }
 }
-//includeBuild("app") {
-//}
-include(":app")
