@@ -3,15 +3,17 @@ version = "1.0.0"
 
 val composite: String by project
 
-when(composite) {
-    "includeBuild" -> {
-        configurations.all {
-            resolutionStrategy.dependencySubstitution {
-                substitute(
-                    module("com.macrofocus:common")
-                ).using(project(":common")).because("we work with the unreleased development version")
+allprojects {
+    when (composite) {
+        "include" -> {
+            configurations.all {
+                resolutionStrategy.dependencySubstitution {
+                    //                substitute(
+                    //                    module("com.macrofocus:common")
+                    //                ).using(project(":common")).because("we work with the unreleased development version")
 
-//                substitute(module("com.macrofocus:common")).using(project(":common"))
+                    substitute(module("com.macrofocus:common")).using(project(":common"))
+                }
             }
         }
     }
