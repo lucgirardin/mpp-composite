@@ -1,3 +1,9 @@
+pluginManagement {
+    plugins {
+        kotlin("multiplatform") version "1.6.0" apply false
+    }
+}
+
 rootProject.name = "mpp-composite"
 
 includeBuild("common") {
@@ -5,6 +11,6 @@ includeBuild("common") {
         substitute(module("com.macrofocus:common")).using(project(":"))
     }
 }
-includeBuild("app") {
-}
-//include(":app")
+//includeBuild("app") {
+//}
+include(":app")
