@@ -33,8 +33,15 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting { /* ... */ }
-        val commonTest by getting { /* ... */ }
+        val commonMain by getting {
+            dependencies {
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
         val jvmMain by getting { /* ... */ }
         val jvmTest by getting { /* ... */ }
         val jsMain by getting { /* ... */ }

@@ -34,8 +34,16 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting { /* ... */ }
-        val commonTest by getting { /* ... */ }
+        val commonMain by getting {
+            dependencies {
+//                implementation("com.macrofocus:common:1.0.0")
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
         val jvmMain by getting { /* ... */ }
         val jvmTest by getting { /* ... */ }
         val jsMain by getting { /* ... */ }
