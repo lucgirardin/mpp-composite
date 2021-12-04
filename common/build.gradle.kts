@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.5.31"
+    kotlin("multiplatform") version "1.6.0"
 }
 
 group = "com.macrofocus"
@@ -35,7 +35,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("com.macrofocus:common:1.0.0")
             }
         }
         val commonTest by getting {

@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.5.31"
+    kotlin("multiplatform") version "1.6.0"
     application
 }
 
@@ -8,6 +8,10 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 
 kotlin {
