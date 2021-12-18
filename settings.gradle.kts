@@ -1,4 +1,9 @@
 pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev/")
+    }
     plugins {
         kotlin("multiplatform") version "1.5.10" apply false
     }
