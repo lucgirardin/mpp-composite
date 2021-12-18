@@ -11,33 +11,40 @@ repositories {
     mavenCentral()
 }
 
+val js: String by project
+val jvm: String by project
+
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 
 kotlin {
-    jvm() {
-        withJava()
+    if(jvm.toBoolean()) {
+        jvm() {
+            withJava()
+        }
     }
 
-    js(IR) {
-        browser {
-            webpackTask {
-                cssSupport.enabled = true
-            }
+    if(js.toBoolean()) {
+        js(IR) {
+            browser {
+                webpackTask {
+                    cssSupport.enabled = true
+                }
 
-            runTask {
-                cssSupport.enabled = true
-            }
+                runTask {
+                    cssSupport.enabled = true
+                }
 
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                    webpackConfig.cssSupport.enabled = true
+                testTask {
+                    useKarma {
+                        useChromeHeadless()
+                        webpackConfig.cssSupport.enabled = true
+                    }
                 }
             }
+            binaries.executable()
         }
-        binaries.executable()
     }
 
     sourceSets {
@@ -51,10 +58,16 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val jvmMain by getting { /* ... */ }
-        val jvmTest by getting { /* ... */ }
-        val jsMain by getting { /* ... */ }
-        val jsTest by getting { /* ... */ }
+
+        if(jvm.toBoolean()) {
+            val jvmMain by getting { /* ... */ }
+            val jvmTest by getting { /* ... */ }
+        }
+
+        if(js.toBoolean()) {
+            val jsMain by getting { /* ... */ }
+            val jsTest by getting { /* ... */ }
+        }
     }
 }
 
